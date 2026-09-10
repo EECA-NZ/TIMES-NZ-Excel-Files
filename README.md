@@ -1,9 +1,10 @@
 # TIMES-NZ Excel files
 
-This repository houses release versions of TIMES-NZ Excel configuration data files. These fully define all optional input components of TIMES-NZ model scenarios, but do not include results or raw data. They are intended for use by modellers, developers, or students to enable working with the TIMES-NZ model without needing to perform preprocessing locally. 
+Version: 3.0.8
+
+This repository houses release versions of TIMES-NZ Excel configuration data files. These fully define all optional input components of TIMES-NZ model scenarios, but do not include results or raw data. They are intended for use by modellers, developers, or students who wish to work with the TIMES-NZ model without needing to perform preprocessing.
 
 The [TIMES-NZ source repo](https://github.com/EECA-NZ/TIMES-NZ-Model-Files) includes all raw data, assumptions, and code used to create these configuration files. If there are any version mismatches, the source repo should be considered the source of truth. 
-
 
 ## Supporting resources
 
@@ -15,7 +16,7 @@ These files are challening to interpret in isolation. The following resources pr
 
 Users may also find the [process and commodity](https://times-nz-docs.readthedocs.io/en/latest/developer_guide/code-lookups.html) lookup code tables useful for adding meaning to internal model codes. These are intended to be used in interpreting output files, and were used to create the [TIMES-NZ data explorer](https://www.eeca.govt.nz/insights/data-tools/new-zealand-energy-scenarios-times-nz/). 
 
-From major version 3 onwards, the accompanying `metadata.csv` file describes each tagged table and its location within the Excel workbook structure. This can assist developers in identifying specific inputs and their context within the wider structure
+From major version 3 onwards, the accompanying `config_metadata.csv` file describes each tagged table and its location within the Excel workbook structure. This can assist developers in identifying specific inputs and their context within the wider structure.
 
 ## Recommended use
 
@@ -23,7 +24,7 @@ These files contain the model input data and optional model components. To run t
 
 Scenario definitions (or "cases") can be configured within Veda, and define which model components are selected for a particular scenario. Case files used for TIMES-NZ release scenarios (including *Steady*, *Shift*, and related sensitivities) are included. 
 
-Users without a Veda licence may wish to use a [Veda Online](https://vedaonline.cloud/) trial account for modest test runs. A model can be created by cloning this public repository as its data source. The trial is limited in duration and available solve time; see the [Veda Online documentation](https://vedaonline-documentation.readthedocs.io/en/latest/) for current details.
+Users without a Veda licence may wish to use a [Veda Online](https://vedaonline.cloud/) trial account. A model can be created by cloning this public repository as its data source. The trial is limited in duration and available solve time; see the [Veda Online documentation](https://vedaonline-documentation.readthedocs.io/en/latest/) for current details.
 
 If you wish to modify the input files for your own model or scenarios, we recommend forking this repository and making changes in your fork. Advanced users may also wish to fork the source repository and modify the preprocessing code directly.
 
