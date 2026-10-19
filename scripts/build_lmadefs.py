@@ -16,6 +16,21 @@ NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PKGREL = "http://schemas.openxmlformats.org/package/2006/relationships"
 
+# Veda adds one report-table column for every distinct `_Map.dimension`.
+# Process and commodity concordances both use the generic Sector and EndUse
+# labels, but their classifications describe different things.  They therefore
+# need distinct report-column names.
+PROCESS_DIMENSION_NAMES = {
+    "Sector": "Process_Sector",
+    "SectorGroup": "Process_SectorGroup",
+    "EndUse": "Process_EndUse",
+}
+COMMODITY_DIMENSION_NAMES = {
+    "Sector": "Commodity_Sector",
+    "SectorGroup": "Commodity_SectorGroup",
+    "EndUse": "Commodity_EndUse",
+}
+
 
 def csv_rows(directory: Path):
     for path in sorted(directory.glob("*.csv")):
@@ -40,7 +55,8 @@ def process_maps():
                     "tcap", "Description", "Note",
                 } or not value:
                     continue
-                key = (dimension, value, process)
+                report_dimension = PROCESS_DIMENSION_NAMES.get(dimension, dimension)
+                key = (report_dimension, value, process)
                 if key not in mapped:
                     mapped.add(key)
                     # In a _Map table, `name` is the optional name-pattern
@@ -48,7 +64,7 @@ def process_maps():
                     # output classification dimension.  Match the process
                     # through pset_pn and write the concordance value as the
                     # classification.
-                    rows.append([dimension, "", value, process])
+                    rows.append([report_dimension, "", value, process])
     return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
 
 
@@ -63,12 +79,13 @@ def commodity_maps():
             for dimension, value in source.items():
                 if dimension in {"Commodity", "csets", "unit", "Description"} or not value:
                     continue
-                key = (dimension, value, commodity)
+                report_dimension = COMMODITY_DIMENSION_NAMES.get(dimension, dimension)
+                key = (report_dimension, value, commodity)
                 if key not in mapped:
                     mapped.add(key)
                     # As above, match the commodity through cset_cn and put
                     # the concordance value in the output classification.
-                    rows.append([dimension, "", value, commodity])
+                    rows.append([report_dimension, "", value, commodity])
     return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
 
 
