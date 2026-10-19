@@ -43,7 +43,12 @@ def process_maps():
                 key = (dimension, value, process)
                 if key not in mapped:
                     mapped.add(key)
-                    rows.append([dimension, value, "", process])
+                    # In a _Map table, `name` is the optional name-pattern
+                    # filter and `description` is the value written to the
+                    # output classification dimension.  Match the process
+                    # through pset_pn and write the concordance value as the
+                    # classification.
+                    rows.append([dimension, "", value, process])
     return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
 
 
@@ -61,7 +66,9 @@ def commodity_maps():
                 key = (dimension, value, commodity)
                 if key not in mapped:
                     mapped.add(key)
-                    rows.append([dimension, value, "", commodity])
+                    # As above, match the commodity through cset_cn and put
+                    # the concordance value in the output classification.
+                    rows.append([dimension, "", value, commodity])
     return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
 
 
