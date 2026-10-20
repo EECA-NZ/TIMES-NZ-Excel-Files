@@ -59,13 +59,12 @@ def process_maps():
                 key = (report_dimension, value, process)
                 if key not in mapped:
                     mapped.add(key)
-                    # In a _Map table, `name` is the optional name-pattern
-                    # filter and `description` is the value written to the
-                    # output classification dimension.  Match the process
-                    # through pset_pn and write the concordance value as the
-                    # classification.
-                    rows.append([report_dimension, "", value, process])
-    return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
+                    # The optional `name` pattern is deliberately omitted:
+                    # pset_pn is the actual process filter.  Including a
+                    # wholly blank `name` column causes Veda Online to
+                    # materialise duplicate `name` fields in pilot_runs.
+                    rows.append([report_dimension, value, process])
+    return sorted(rows, key=lambda r: (r[0], r[1], r[2]))
 
 
 def commodity_maps():
@@ -83,10 +82,10 @@ def commodity_maps():
                 key = (report_dimension, value, commodity)
                 if key not in mapped:
                     mapped.add(key)
-                    # As above, match the commodity through cset_cn and put
-                    # the concordance value in the output classification.
-                    rows.append([report_dimension, "", value, commodity])
-    return sorted(rows, key=lambda r: (r[0], r[1], r[3]))
+                    # As above, match through cset_cn and omit the unused
+                    # `name` pattern column.
+                    rows.append([report_dimension, value, commodity])
+    return sorted(rows, key=lambda r: (r[0], r[1], r[2]))
 
 
 def model_sets():
@@ -146,8 +145,8 @@ def build():
             ["VAR_FOUT", "", "", "ELE", "-ELC_BAT_*", "", "", "", "NRG", "", "", "PJ", "", "", "Electricity_generation", "Electricity generation", "Electricity output from electricity-generation processes, excluding batteries", "p,c", ""],
             ["VAR_FOUT", "", "", "", "", "", "", "", "ENV", "-TOTCO2", "", "kt", "", "", "Emissions", "Emissions", "Process emissions, excluding the aggregate TOTCO2 commodity", "p,c", ""],
         ]),
-        ("Process_Map", [["~Process_Map"], ["dimension", "name", "description", "pset_pn"], *process_maps()]),
-        ("Commodity_Map", [["~Commodity_Map"], ["dimension", "name", "description", "cset_cn"], *commodity_maps()]),
+        ("Process_Map", [["~Process_Map"], ["dimension", "description", "pset_pn"], *process_maps()]),
+        ("Commodity_Map", [["~Commodity_Map"], ["dimension", "description", "cset_cn"], *commodity_maps()]),
         # Use the template's Veda headers exactly.  The concordances supply set
         # identifiers but no separate short/long descriptions, so retain the
         # identifier as the short description and leave the long one blank.
