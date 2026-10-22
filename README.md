@@ -1,10 +1,13 @@
-# TIMES-NZ Excel files
+# TIMES-NZ for Veda Online
 
 Version: 3.0.8
 
+
 This repository houses release versions of TIMES-NZ Excel configuration data files. These fully define all optional input components of TIMES-NZ model scenarios, but do not include results or raw data. They are intended for use by modellers, developers, or students who wish to work with the TIMES-NZ model without needing to perform preprocessing.
 
-We recommend Veda Online for working with these files. If you wish to inspect the model in more detail, full data, code, and assumptions documentation are available at the [TIMES-NZ repository](https://github.com/EECA-NZ/TIMES-NZ-Model-Files). 
+We recommend Veda Online for working with these files. 
+
+Full data, code, and assumptions documentation for TIMES-NZ 3.0 are available at the [TIMES-NZ source repository](https://github.com/EECA-NZ/TIMES-NZ-Model-Files). 
 
 ## Quickstart guide
 
@@ -17,15 +20,15 @@ Visit [Veda Online](https://vedaonline.cloud/), and create an account. Select "C
 ```
 https://github.com/EECA-NZ/TIMES-NZ-Excel-Files.git
 ```
-Under branch, select "main", then click "Clone". Other versions of the model may be available here in future. Note that Veda Online requires a license for longterm use, but a free week trial is available. This quickstart guide should now also be visible in the About section. 
+Under branch, select "main", then click "Clone". Other versions of the model may be available here in future. You can now view this quickstart guide in the model's *About* section.
+
+Note that Veda Online requires a license for longterm use, but a free week trial is available.
 
 **2. Synchronise the data**
 
 Head to the *Navigator* tab, ensure all files are selected, and click "Synchronise". This converts the excel files to TIMES-compatible files to prepare for solving. 
 
-See [here](https://kanors-emr.github.io/VedaOnline-documentation/model_workspace/Navigator/) for current VO documentation on the Navigator tab's features. 
-
-The current model database is viewable in the Items View and Browse windows.
+See [here](https://kanors-emr.github.io/VedaOnline-documentation/model_workspace/Navigator/) for current VO documentation on the Navigator tab's features. After synchronisation, the current model database is also viewable in the *Items View* and *Browse* tabs.
 
 **3. Solve a case**
 
@@ -38,6 +41,11 @@ Scenario sensitivities are also available, and it's possible to build your own (
 You can use the *Reports* tab to investigate results with our post-processing labels. This makes results possible to interpret; note that the *Results* tab only includes raw results, which can be useful for debugging but is not recommended for analysis. 
 
  - Go to the *Reports* tab, which should show options for the key dimensions (Scenario, Region, Variable, and Year), and a selection of additional dimensions. 
+- Select at least one variable. Current options include electricity generation, emissions, final energy demand, or final energy demand by timeslice. Select "Get Data".
+- This brings you to the report page, which renders a table by default. It's possible to instead create a range of charts from the dropdown menu.
+- You can modify the grouping variables by dragging them to the top left of the table/chart dropdown, and optionally create a small multiples view using the optional dropdown.
+
+We encourage you to explore the results of our scenarios, or those you create yourself. There are a range of additional features in the report viewer, and you can read about those in more detail [here](https://kanors-emr.github.io/VedaOnline-documentation/model_workspace/Reports/).
 
 
 
