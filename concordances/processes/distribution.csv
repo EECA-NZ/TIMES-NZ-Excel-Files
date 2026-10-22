@@ -1,4 +1,4 @@
-Process,Sector,Commodity,ProcessGroup
+Process,Sector,Fuel,ProcessGroup
 FTE_INDAGRWST,Industry,Agricultural waste,Distribution
 FTE_RESAGRWST,Residential,Agricultural waste,Distribution
 FTE_ELCAGRWST,Electricity generation,Agricultural waste,Distribution
