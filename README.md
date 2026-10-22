@@ -35,17 +35,17 @@ Scenario sensitivities are also available, and it's possible to build your own (
 
 **4. Investigate results**
 
-The *Results* tab will provide all results, but they are difficult to interpret as they only contain item codes, which are not designed to be human-readable. Instead, in the *Reports* tab, you can select variables and categories to build your own charts to inspect results or compare scenarios. 
+You can use the *Reports* tab to investigate results with our post-processing labels. This makes results possible to interpret; note that the *Results* tab only includes raw results, which can be useful for debugging but is not recommended for analysis. 
 
-Note that all concordance files, which map TIMES-NZ codes to human-readable categories, are also included in this repository under `concordances`. It is possible to download raw result tables from the *Results* window, then use these files to create your own datasets as desired. 
+ - Go to the *Reports* tab, which should show options for the key dimensions (Scenario, Region, Variable, and Year), and a selection of additional dimensions. 
 
-(This step needs further testing and might need more detail)
+
 
 **5. Create your own scenarios**
 
 The Cases defined in the *Run Manager* tab include "Scenario Groups", which define which combinations of input files are combined within the scenario. Currently, all available cases include distinct Scenario Groups, including our sensitivity case scenarios. 
 
-It is easy to create a new Scenario Group by changing the combinations of selected data. For example, you might wish to run the Steady scenario, but modified to include the higher carbon prices of the Shift scenario. Simply select the Steady scenario group, modify it to remove `Carbon_Steady` and instead include `Carbon_Shift`, and save your new Scenario Group. Then, create a case that uses this Scenario Group, with a name of your choosing, and solve this case. Now, your new results are available in the *Reports* tab to compare to other results.
+It is straightforward to create a new Scenario Group by changing the combinations of selected data. For example, you might wish to run the Steady scenario, but modified to include the higher carbon prices of the Shift scenario. Simply select the Steady scenario group, modify it to remove `Carbon_Steady` and instead include `Carbon_Shift`, and save your new Scenario Group. Then, create a case that uses this Scenario Group, with a name of your choosing, and solve this case. Now, your new results are available in the *Reports* tab to compare to other results.
 
 
 **6. Modify input data**
@@ -55,6 +55,10 @@ It is more involved to modify the underlying data further, but this is also poss
 ## Digging deeper 
 
 More advanced users may also be interested in the [TIMES-NZ source repo](https://github.com/EECA-NZ/TIMES-NZ-Model-Files). This repo includes all raw data, assumptions, and code used to create TIMES-NZ model, not only the input files found here. If there are any version mismatches, the source repo should be considered the source of truth. 
+
+## Contact 
+
+Please contact times-nz@eeca.govt.nz with any feedback, questions, or comments. 
 
 
 

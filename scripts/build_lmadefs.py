@@ -17,12 +17,9 @@ REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PKGREL = "http://schemas.openxmlformats.org/package/2006/relationships"
 
 # Veda adds one report-table column for every distinct `_Map.dimension`.
-# Process and commodity concordances both use the generic Sector and EndUse
-# labels, but their classifications describe different things.  They therefore
-# need distinct report-column names.
+# Commodity sector and end-use classifications are kept distinct from their
+# process counterparts because they describe different things.
 PROCESS_DIMENSION_NAMES = {
-    "Sector": "Process_Sector",
-    "SectorGroup": "Process_SectorGroup",
     "EndUse": "Process_EndUse",
 }
 COMMODITY_DIMENSION_NAMES = {
@@ -52,7 +49,8 @@ def process_maps():
                 # electrified demand technologies can have several outputs.
                 if dimension in {
                     "Process", "Commodity", "CommodityOut", "sets", "tact",
-                    "tcap", "Description", "Note",
+                    "tcap", "Description", "Note", "FuelDetail", "FuelGroup",
+                    "Renewable",
                 } or not value:
                     continue
                 report_dimension = PROCESS_DIMENSION_NAMES.get(dimension, dimension)
@@ -76,7 +74,9 @@ def commodity_maps():
             if not commodity:
                 continue
             for dimension, value in source.items():
-                if dimension in {"Commodity", "csets", "unit", "Description"} or not value:
+                if dimension in {
+                    "Commodity", "csets", "unit", "Description", "SectorGroup",
+                } or not value:
                     continue
                 report_dimension = COMMODITY_DIMENSION_NAMES.get(dimension, dimension)
                 key = (report_dimension, value, commodity)
