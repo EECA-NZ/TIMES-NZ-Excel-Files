@@ -49,8 +49,8 @@ def process_maps():
                 # electrified demand technologies can have several outputs.
                 if dimension in {
                     "Process", "Commodity", "CommodityOut", "sets", "tact",
-                    "tcap", "Description", "Note", "FuelDetail", "FuelGroup",
-                    "Renewable",
+                    "tcap", "Description", "Note", "Fuel", "FuelDetail",
+                    "FuelGroup", "Renewable",
                 } or not value:
                     continue
                 report_dimension = PROCESS_DIMENSION_NAMES.get(dimension, dimension)
