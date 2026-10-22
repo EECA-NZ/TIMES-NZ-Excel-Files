@@ -48,6 +48,7 @@ You can use the *Reports* tab to investigate results with our post-processing la
 We encourage you to explore the results of our scenarios, or those you create yourself. There are a range of additional features in the report viewer, and you can read about those in more detail [here](https://kanors-emr.github.io/VedaOnline-documentation/model_workspace/Reports/).
 
 
+> Note: the LMADefs_TIMESNZ.xlsx file is used to label raw data. It is built from the TIMES-NZ concordance tables, which are also available in `concordances/` if you wish to explore these further.
 
 **5. Create your own scenarios**
 
