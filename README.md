@@ -15,7 +15,7 @@ This guide should enable users to run TIMES-NZ solves, recreate existing results
 
 **1. Creating the model**
 
-Visit [Veda Online](https://vedaonline.cloud/), and create an account. Select "Create Model", and in the github repository simply enter this repository's address:
+Visit [Veda Online](https://vedaonline.cloud/), and create an account - you may need to verify your email address. Select "Create Model", and in the github repository simply enter this repository's address:
 
 ```
 https://github.com/EECA-NZ/TIMES-NZ-Excel-Files.git
@@ -26,7 +26,9 @@ Note that Veda Online requires a license for longterm use, but a free week trial
 
 **2. Synchronise the data**
 
-Head to the *Navigator* tab, ensure all files are selected, and click "Synchronise". This converts the excel files to TIMES-compatible files to prepare for solving. It can take a small moment to get started, so don't worry if it doesn't look like anything is happening at first. 
+Head to the *Navigator* tab, ensure all files are selected, and click "Synchronise". This converts the excel files to TIMES-compatible files to prepare for solving. 
+
+It can take a small moment to get started, so don't worry if it doesn't look like anything is happening at first. You can see active progress on model synchronisation on the Jobs dashboard. 
 
 See [here](https://kanors-emr.github.io/VedaOnline-documentation/model_workspace/Navigator/) for more detail current VO documentation on the Navigator tab's features. After synchronisation, the current model database is also viewable in the *Items View* and *Browse* tabs.
 
